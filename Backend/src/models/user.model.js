@@ -93,8 +93,8 @@ userSchema.methods.generateAccessToken = async function(){
         {
             _id : this.id
         },
-        process.env.ACCESS_REFRESH_SECRET,
-        { expiresIn: process.env.ACCESS_REFRESH_EXPIRY }
+        process.env.REFRESH_TOKEN_SECRET,
+        { expiresIn: process.env.REFRESH_TOKEN_EXPIRY }
     )
 }
 
@@ -111,4 +111,4 @@ userSchema.methods.generateTemporaryToken = function () {
     return { unhashedToken, hashedToken, tokenExpiry }
 }
 
-export const User = mongoose.model("User", userSchema)
+export const User = mongoose.model("User",  userSchema)
