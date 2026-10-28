@@ -65,8 +65,8 @@ const userSchema = new Schema(
 //To run this everytime an account is created or when password is changed
 userSchema.pre("save", async function(){
     
-    if(!this.isModified(this.password)) return
-    else this.password = await bcrypt.hash(this.password, 10)
+    if(!this.isModified("password")) return
+    this.password = await bcrypt.hash(this.password, 10)
 })
 
 //Other Custom Methods - 
@@ -88,7 +88,7 @@ userSchema.methods.generateAccessToken = async function(){
 )
 }
 
-userSchema.methods.generateAccessToken = async function(){
+userSchema.methods.generateRefreshToken = async function(){
     return jwt.sign(
         {
             _id : this.id

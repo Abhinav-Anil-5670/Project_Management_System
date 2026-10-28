@@ -23,11 +23,16 @@ app.use(cors({
 //routes go here
 
 import healthCheckRouter from "./routes/healthcheck.route.js"
+import authrouter from './routes/auth.routes.js'
 
 app.use('/api/v1/healthcheck', healthCheckRouter)
+
+app.use('/api/v1/auth', authrouter)
 
 app.get('/',(req,res)=>{
     res.send("Server is working")
 })
+
+
 
 export default app
