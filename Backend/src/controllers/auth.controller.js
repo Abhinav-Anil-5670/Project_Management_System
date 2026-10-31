@@ -49,5 +49,10 @@ const registerUser  = asyncHandler (async (req,res)=>{
 const loginUser = asyncHandler(async (req,res)=>{
     
     const {username, password, email} = req.body()
+
+    const userExists = await User.findOne(email)
+
+    if(!userExists) 
+        throw new ApiError(409, "Now User exists")
 })
 export {registerUser}
