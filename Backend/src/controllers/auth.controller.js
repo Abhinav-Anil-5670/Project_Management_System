@@ -50,11 +50,12 @@ const loginUser = asyncHandler(async (req,res)=>{
     
     const {username, password, email} = req.body()
 
-    // const user = await User.findOne(email)
+    const user = await User.findOne(email)
 
     if(!user) 
         throw new ApiError(409, "Now User exists")
 
     const passwordCheck = user.passwordCheck(password, user.password)
+
 })
 export {registerUser}
