@@ -7,28 +7,8 @@ class ApiError extends Error{
         this.errors = errors
         this.sucess = false
 
-        
-        
-        
-        
-        
-        
         if (stack) this.stack = stack
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         else Error.captureStackTrace(this, this.constructor)
-        
-        
-        
-        
     }
 }
 
